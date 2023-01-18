@@ -17,7 +17,8 @@ class Num2Words {
     final whole = formatWhole(value.toInt());
     final cashWhole = _langWordMap['cashWhole'];
     final fractionCount = _langWordMap['cashDecCount'];
-    final fraction = formatWhole(((value - value.toInt()) * pow(10, fractionCount)).round());
+    final fraction =
+        formatWhole(((value - value.toInt()) * pow(10, fractionCount)).round());
     final and = _langWordMap['and'];
     final cashFraction = _langWordMap['cashFraction'];
     return '$whole $cashWhole $and $fraction $cashFraction';
@@ -95,6 +96,40 @@ class Num2Words {
       90: 'ninety',
       100: 'hundred',
       1000: 'thousand',
+    },
+    'es_MX': {
+      'maxTeen': 15,
+      'and': 'y',
+      'point': 'punto',
+      'cashWhole': 'pesos',
+      'cashFraction': 'centavos',
+      'cashDecCount': 2,
+      0: 'cero',
+      1: 'uno',
+      2: 'dos',
+      3: 'tres',
+      4: 'cuatro',
+      5: 'cinco',
+      6: 'seis',
+      7: 'siete',
+      8: 'ocho',
+      9: 'nueve',
+      10: 'diez',
+      11: 'once',
+      12: 'doce',
+      13: 'trece',
+      14: 'catorce',
+      15: 'quince',
+      20: 'veinte',
+      30: 'treinta',
+      40: 'cuarenta',
+      50: 'cincuenta',
+      60: 'sesenta',
+      70: 'setenta',
+      80: 'ochenta',
+      90: 'noventa',
+      100: 'ciento',
+      1000: 'mil',
     }
   };
 }
