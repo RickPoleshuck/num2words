@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('Tests', ()
   {
-    final num2words = Num2Words();
+    final num2words = Num2Words(language: 'en_US');
 
     setUp(() {
       // Additional setup goes here.
