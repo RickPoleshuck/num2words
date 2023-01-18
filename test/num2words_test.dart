@@ -5,11 +5,6 @@ void main() {
   group('Tests', ()
   {
     final num2words = Num2Words(language: 'en_US');
-
-    setUp(() {
-      // Additional setup goes here.
-    });
-
     test('whole numbers', () {
       for (int i = 0; i < 10000; ++i) {
         print(num2words.formatWhole(i));

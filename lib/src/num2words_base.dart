@@ -18,7 +18,6 @@ class Num2Words {
     final cashWhole = _langWordMap['cashWhole'];
     final fractionCount = _langWordMap['cashDecCount'];
     final fraction = formatWhole(((value - value.toInt()) * pow(10, fractionCount)).round());
-    final and = _langWordMap['and'];
     final cashFraction = _langWordMap['cashFraction'];
     return '$whole $cashWhole $and $fraction $cashFraction';
   }
