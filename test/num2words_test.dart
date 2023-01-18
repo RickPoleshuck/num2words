@@ -24,11 +24,13 @@ void main() {
       }
       // expect(num2words.format(123), 'value');
     });
-    test('money', () {
-      final m = 123.45;
-      var money = num2words.formatMoney(m);
-      print('$m: $money');
-      // expect(num2words.format(123), 'value');
+    test('US money', () {
+      num2words = Num2Words(language: 'en_US');
+      for (double i = 0; i < 10000; ++i) {
+        final dec = Random().nextDouble();
+        final value = double.parse((i + dec).toStringAsFixed(2));
+        print('${value.toStringAsFixed(2)}: ${num2words.formatMoney(value)}');
+      }
     });
   });
 }

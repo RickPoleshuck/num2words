@@ -4,6 +4,12 @@ class Num2Words {
   final String language;
   late Map _langWordMap;
   late int _maxTeen;
+  late int _fractionCount;
+  late String _cashWhole;
+  late String _cashFraction;
+  late String _cashWholeOne;
+  late String _cashFractionOne;
+  late String _and;
 
   Num2Words({this.language = 'en_US'}) {
     if (!wordMap.keys.contains(language)) {
@@ -11,17 +17,23 @@ class Num2Words {
     }
     _langWordMap = wordMap[language]!;
     _maxTeen = _langWordMap['maxTeen']!;
+    _fractionCount = _langWordMap['cashDecCount'];
+    _cashWhole = _langWordMap['cashWhole'];
+    _cashFraction = _langWordMap['cashFraction'];
+    _cashWholeOne = _langWordMap['cashWholeOne'];
+    _cashFractionOne = _langWordMap['cashFractionOne'];
+    _and = _langWordMap['and'];
   }
 
   String formatMoney(double value) {
-    final whole = formatWhole(value.toInt());
-    final cashWhole = _langWordMap['cashWhole'];
-    final fractionCount = _langWordMap['cashDecCount'];
+    final dollars = value.toInt();
+    final whole = value >= 1.0 ? formatWhole(dollars) : '';
+    final cents = ((value - dollars) * pow(10, _fractionCount)).round();
     final fraction =
-        formatWhole(((value - value.toInt()) * pow(10, fractionCount)).round());
-    final and = _langWordMap['and'];
-    final cashFraction = _langWordMap['cashFraction'];
-    return '$whole $cashWhole $and $fraction $cashFraction';
+        formatWhole(cents);
+    final cashWhole = dollars == 1 ? _cashWholeOne : _cashWhole;
+    final cashFraction = cents == 1 ? _cashFractionOne : _cashFraction;
+    return '${value >= 1.0 ? '$whole $cashWhole $_and ' : ''}$fraction $cashFraction';
   }
 
   String formatWhole(int value) {
@@ -64,7 +76,9 @@ class Num2Words {
       'and': 'and',
       'point': 'point',
       'cashWhole': 'dollars',
+      'cashWholeOne': 'dollar',
       'cashFraction': 'cents',
+      'cashFractionOne': 'cent',
       'cashDecCount': 2,
       0: 'zero',
       1: 'one',
@@ -102,10 +116,12 @@ class Num2Words {
       'and': 'y',
       'point': 'punto',
       'cashWhole': 'pesos',
+      'cashWholeOne': 'peso',
       'cashFraction': 'centavos',
+      'cashFractionOne': 'centavo',
       'cashDecCount': 2,
       0: 'cero',
-      1: 'uno',
+      1: 'un',
       2: 'dos',
       3: 'tres',
       4: 'cuatro',
