@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   group('Tests', ()
   {
-    var num2words = Num2Words(language: 'en_US');
+    var num2words = Num2Words.create(language: 'en_US');
     test('whole numbers', () {
       for (int i = 0; i < 10000; ++i) {
         print(num2words.formatWhole(i));
@@ -16,7 +16,7 @@ void main() {
 
 
     test('Mexican money', () {
-      num2words = Num2Words(language: 'es_MX');
+      num2words = Num2Words.create(language: 'es_MX');
       for (double i = 0; i < 10000; ++i) {
         final dec = Random().nextDouble();
         final value = double.parse((i + dec).toStringAsFixed(2));
@@ -25,7 +25,7 @@ void main() {
 
     });
     test('US money', () {
-      num2words = Num2Words(language: 'en_US');
+      num2words = Num2Words.create(language: 'en_US');
       for (double i = 0; i < 10000; ++i) {
         final dec = Random().nextDouble();
         final value = double.parse((i + dec).toStringAsFixed(2));
