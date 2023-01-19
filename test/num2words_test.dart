@@ -22,7 +22,7 @@ void main() {
         final value = double.parse((i + dec).toStringAsFixed(2));
         print('${value.toStringAsFixed(2)}: ${num2words.formatMoney(value)}');
       }
-      // expect(num2words.format(123), 'value');
+
     });
     test('US money', () {
       num2words = Num2Words(language: 'en_US');

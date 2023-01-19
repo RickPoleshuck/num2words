@@ -5,11 +5,12 @@ class Num2Words {
   late Map _langWordMap;
   late int _maxTeen;
   late int _fractionCount;
-  late String _cashWhole;
-  late String _cashFraction;
-  late String _cashWholeOne;
-  late String _cashFractionOne;
+  late String _dollarsName;
+  late String _centsName;
+  late String _dollarName;
+  late String _centName;
   late String _and;
+  late String _wholeAnd;
 
   Num2Words({this.language = 'en_US'}) {
     if (!wordMap.keys.contains(language)) {
@@ -18,11 +19,12 @@ class Num2Words {
     _langWordMap = wordMap[language]!;
     _maxTeen = _langWordMap['maxTeen']!;
     _fractionCount = _langWordMap['cashDecCount'];
-    _cashWhole = _langWordMap['cashWhole'];
-    _cashFraction = _langWordMap['cashFraction'];
-    _cashWholeOne = _langWordMap['cashWholeOne'];
-    _cashFractionOne = _langWordMap['cashFractionOne'];
+    _dollarsName = _langWordMap['dollarsName'];
+    _centsName = _langWordMap['centsName'];
+    _dollarName = _langWordMap['dollarName'];
+    _centName = _langWordMap['centName'];
     _and = _langWordMap['and'];
+    _wholeAnd = _langWordMap['wholeAnd'];
   }
 
   String formatMoney(double value) {
@@ -31,9 +33,9 @@ class Num2Words {
     final cents = ((value - dollars) * pow(10, _fractionCount)).round();
     final fraction =
         formatWhole(cents);
-    final cashWhole = dollars == 1 ? _cashWholeOne : _cashWhole;
-    final cashFraction = cents == 1 ? _cashFractionOne : _cashFraction;
-    return '${value >= 1.0 ? '$whole $cashWhole $_and ' : ''}$fraction $cashFraction';
+    final dollarName = dollars == 1 ? _dollarName : _dollarsName;
+    final centName = cents == 1 ? _centName : _centsName;
+    return '${value >= 1.0 ? '$whole $dollarName $_and ' : ''}$fraction $centName';
   }
 
   String formatWhole(int value) {
@@ -74,11 +76,12 @@ class Num2Words {
     'en_US': {
       'maxTeen': 19,
       'and': 'and',
+      'wholeAnd': '',
       'point': 'point',
-      'cashWhole': 'dollars',
-      'cashWholeOne': 'dollar',
-      'cashFraction': 'cents',
-      'cashFractionOne': 'cent',
+      'dollarsName': 'dollars',
+      'dollarName': 'dollar',
+      'centsName': 'cents',
+      'centName': 'cent',
       'cashDecCount': 2,
       0: 'zero',
       1: 'one',
@@ -114,11 +117,12 @@ class Num2Words {
     'es_MX': {
       'maxTeen': 15,
       'and': 'y',
+      'wholeAnd': 'y ',
       'point': 'punto',
-      'cashWhole': 'pesos',
-      'cashWholeOne': 'peso',
-      'cashFraction': 'centavos',
-      'cashFractionOne': 'centavo',
+      'dollarsName': 'pesos',
+      'dollarName': 'peso',
+      'centsName': 'centavos',
+      'centName': 'centavo',
       'cashDecCount': 2,
       0: 'cero',
       1: 'un',
