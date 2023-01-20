@@ -20,12 +20,14 @@ class Num2WordsEsMX implements Num2Words {
     if (value < 0) {
       throw UnimplementedError('Values below 0 are not supported');
     }
+    if (value == 1) {
+      // special case for one
+      return 'un';
+    }
     List<String> result = [];
     final teens = value % 100;
     if (teens <= 15) {
-      if (value == 1) {
-        result.add('un');
-      } else if (value <= 15 || teens != 0) {
+      if (value <= 15 || teens != 0) {
         result.add(_wordMap[teens]!);
       }
     } else {
@@ -37,13 +39,18 @@ class Num2WordsEsMX implements Num2Words {
       result.add(_wordMap[tens]!);
     }
     final hundreds = value ~/ 100 % 10;
-    if (hundreds > 0) {
-      result.add('hundred');
-      result.add(_wordMap[hundreds]!);
-    }
     final thousands = value ~/ 1000 % 10;
+    if (hundreds > 0) {
+      if (thousands == 0 && teens == 0 && hundreds == 1) {
+        result.add('cein');
+      } else {
+        result.add('ceinto');
+        result.add(_wordMap[hundreds]!);
+      }
+    }
+
     if (thousands > 0) {
-      result.add('thousand');
+      result.add('mil');
       result.add(_wordMap[thousands]!);
     }
     return result.reversed.join(' ');
