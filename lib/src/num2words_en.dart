@@ -15,7 +15,7 @@ class Num2WordsEnUS implements Num2Words {
   @override
   String formatWhole(final int value) {
     if (value >= 100000) {
-      throw UnimplementedError('Values above 100,000 are not supported.');
+      throw UnimplementedError('Values above 10,000 are not supported.');
     }
     if (value < 0) {
       throw UnimplementedError('Values below 0 are not supported');

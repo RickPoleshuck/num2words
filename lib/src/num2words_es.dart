@@ -15,7 +15,7 @@ class Num2WordsEsMX implements Num2Words {
   @override
   String formatWhole(final int value) {
     if (value >= 100000) {
-      throw UnimplementedError('Values above 100,000 are not supported.');
+      throw UnimplementedError('Values above 10,000 are not supported.');
     }
     if (value < 0) {
       throw UnimplementedError('Values below 0 are not supported');
@@ -23,7 +23,9 @@ class Num2WordsEsMX implements Num2Words {
     List<String> result = [];
     final teens = value % 100;
     if (teens <= 15) {
-      if (value <= 15 || teens != 0) {
+      if (value == 1) {
+        result.add('un');
+      } else if (value <= 15 || teens != 0) {
         result.add(_wordMap[teens]!);
       }
     } else {
@@ -49,7 +51,7 @@ class Num2WordsEsMX implements Num2Words {
 
   final _wordMap = {
     0: 'cero',
-    1: 'un',
+    1: 'uno',
     2: 'dos',
     3: 'tres',
     4: 'cuatro',
