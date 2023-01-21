@@ -46,16 +46,17 @@ class Num2WordsEsMX implements Num2Words {
       if (thousands == 0 && teens == 0 && hundreds == 1) {
         result.add('cein');
       } else {
-        result.add('ceinto');
         if (hundreds != 1) {
-          result.add(_wordMap[hundreds]!);
+          result.add(_wordMap[hundreds*100]!);
         }
       }
     }
 
     if (thousands > 0) {
       result.add('mil');
-      result.add(_wordMap[thousands]!);
+      if (thousands > 1) {
+        result.add(_wordMap[thousands]!);
+      }
     }
     return result.reversed.join(' ');
   }
@@ -98,7 +99,14 @@ class Num2WordsEsMX implements Num2Words {
     70: 'setenta',
     80: 'ochenta',
     90: 'noventa',
-    100: 'ciento',
-    1000: 'mil',
+    100: 'cien',
+    200: 'doscientos',
+    300: 'trescientos',
+    400: 'cuatrocientos',
+    500: 'quinientos',
+    600: 'seiscientos',
+    700: 'setecientos',
+    800: 'ochocientos',
+    900: 'novecientos',
   };
 }
