@@ -26,7 +26,7 @@ class Num2WordsEsMX implements Num2Words {
     }
     List<String> result = [];
     final teens = value % 100;
-    if (teens <= 15) {
+    if (teens <= 29) {
       if (value <= 15 || teens != 0) {
         result.add(_wordMap[teens]!);
       }
@@ -34,10 +34,12 @@ class Num2WordsEsMX implements Num2Words {
       final ones = value % 10;
       if (ones > 0) {
         result.add(_wordMap[ones]!);
+        result.add('y');
       }
       final tens = (teens ~/ 10) * 10;
       result.add(_wordMap[tens]!);
     }
+
     final hundreds = value ~/ 100 % 10;
     final thousands = value ~/ 1000 % 10;
     if (hundreds > 0) {
@@ -73,7 +75,20 @@ class Num2WordsEsMX implements Num2Words {
     13: 'trece',
     14: 'catorce',
     15: 'quince',
+    16: 'dieciséis',
+    17: 'diecisiete',
+    18: 'dieciocho',
+    19: 'diecinueve',
     20: 'veinte',
+    21: 'veintiuno',
+    22: 'veintidós',
+    23: 'veintitres',
+    24: 'veinticuatro',
+    25: 'veinticinco',
+    26: 'veintiseis',
+    27: 'veintisiete',
+    28: 'veintiocho',
+    29: 'veintinueve',
     30: 'treinta',
     40: 'cuarenta',
     50: 'cincuenta',
