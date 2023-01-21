@@ -47,7 +47,9 @@ class Num2WordsEsMX implements Num2Words {
         result.add('cein');
       } else {
         result.add('ceinto');
-        result.add(_wordMap[hundreds]!);
+        if (hundreds != 1) {
+          result.add(_wordMap[hundreds]!);
+        }
       }
     }
 
