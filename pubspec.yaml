@@ -1,12 +1,11 @@
 name: num2words
 description: Utility to convert numbers to words
 version: 1.0.0
-
+repository: https://github.com/RickPoleshuck/num2words
 environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
-  
 
 dev_dependencies:
   lints: ^2.0.0
